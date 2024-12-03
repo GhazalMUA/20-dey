@@ -26,7 +26,7 @@ chrome_options.add_experimental_option("prefs", {
 '''
     start driver
 '''
-
+print('starting...')
 driver = webdriver.Chrome(options=chrome_options)
 url = 'https://facebook.com'
 driver.get(url)
@@ -93,7 +93,9 @@ time.sleep(2)
     
 #looking for search button and search smth (i defind a global variable to be easy for changing account name)     
 try:      
-    search_field = WebDriverWait(driver,10).until(EC.presence_of_element_located((By.XPATH,'//input[@aria-label="Search Facebook"]')))
+    search_field = WebDriverWait(driver,10).until(EC.presence_of_element_located((By.XPATH,'//*[contains(concat( " ", @class, " " ), concat( " ", "x19gujb8", " " ))]'))) 
+
+    # search_field = WebDriverWait(driver,10).until(EC.presence_of_element_located((By.XPATH,'//input[@aria-label="Search Facebook"]'))) 
     print('search field was found')  
     search_field.send_keys(SEARCH_ITEM)
     print('typing was successfull')
